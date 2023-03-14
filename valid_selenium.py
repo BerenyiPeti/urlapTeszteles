@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 driver = webdriver.Firefox()
 
 # Load the page with the form to test
-driver.get("...")
+driver.get("https://agnes-milia.github.io/urlap_validalas/")
 
 # Find the form fields and submit button
 name_field = driver.find_element(By.NAME,"nev")
@@ -14,9 +14,22 @@ email_field = driver.find_element(By.NAME,"email")
 submit_button = driver.find_element(By.XPATH,"//input[@type='submit']")
 
 # Fill in the form fields with test data
-name_field.send_keys("John Smith")
-email_field.send_keys("john.smith@example.hu")
-pw_field.send_keys("blaa")
+def teszt(filenev, teszteset, bongeszo):
+    if bongeszo == "F":
+        driver = webdriver.Firefox()
+
+    lines = []
+    with open(filenev) as file_in:
+
+        for line in file_in:
+            lines.append(line)
+
+    for line in lines:
+        print(line)
+    #name_field.send_keys(nev)
+    #email_field.send_keys(email)
+    #pw_field.send_keys(jelszo)
+
 
 # Click the submit button
 submit_button.click()
@@ -30,3 +43,4 @@ if not success_message.is_displayed():
     raise AssertionError(f"...")
 # Close the browser window
 driver.quit()
+
